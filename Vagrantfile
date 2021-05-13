@@ -1,4 +1,4 @@
-# 
+## 
 Vagrant.configure("2") do |masterConfig|
   #VM1: master
   masterConfig.vm.define "master" do |master|
