@@ -1,4 +1,5 @@
-## 
+# 
+
 Vagrant.configure("2") do |masterConfig|
   #VM1: master
   masterConfig.vm.define "master" do |master|
@@ -15,6 +16,7 @@ Vagrant.configure("2") do |masterConfig|
       dnf update
       dnf groupinstall -y 'Minimal Install'
       dnf install -y epel-release
+      dnf install -y ansible
       dnf install -y podman skopeo buildah vim
       echo "192.168.20.10 master master" >> /etc/hosts
       echo "192.168.20.12 node1 node1" >> /etc/hosts
@@ -30,6 +32,7 @@ Vagrant.configure("2") do |node1Config|
     node1.vm.box = "centos/8"
     node1.vm.hostname = "node1"
     node1.vm.network :private_network, ip: "192.168.20.12"
+    node1.vm.network :forwarded_port, guest:80, host: 80
     node1.ssh.insert_key = false
     node1.vm.provider "virtualbox" do |vNode1|
       vNode1.name = "ansible_node1"
