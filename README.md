@@ -5,11 +5,11 @@
 1. **Wymagane komponenty**
 
 Komputer PC z systemem operacyjnym MS Windows 10, Apple macOS lub Linux o następujących minimalnych parametrach:
-- procesor min. 4 rdzeniowy lub 2 rdzeniowy z technologią Hyper-Threading i włączoną opcją wirtualizacji w BIOS
+- procesor min. 4 rdzeniowy lub 2 rdzeniowy z technologią Hyper-Threading i włączoną opcją wirtualizacji w BIOS / UEFI
 - min. 8 GB pamięci RAM
 - min. 40 GB wolnej przestrzeni dyskowej
 
-Dodatkowo w systemie operacyjnym powinno zostać zainstalowane następujące oprogramowanie:
+Dodatkowo w systemie operacyjnym musi zostać zainstalowane następujące oprogramowanie:
 
 - Vagrant - narzędzie do automatyzacji uruchamiania środowisk wirtualnych https://www.vagrantup.com/downloads
 - VirtualBox - środowisko wirtualizacyjne https://www.virtualbox.org/wiki/Downloads
@@ -17,7 +17,7 @@ Dodatkowo w systemie operacyjnym powinno zostać zainstalowane następujące opr
 
 > Instalacja powyższych komponentów wymaga posiadania uprawnień Administratora systemu operacyjnego. 
 
-2. **Uruchomienie środowiska laoratoryjnego**
+2. **Uruchomienie środowiska laboratoryjnego**
 
 Po instalacji wymaganego oprogramowania należy pobrać plik z definicją laboratoryjnego środowiska Ansible i zapisać go w lokalnym katalogu np. 'OpenSourceTech' na dysku C: (w sytemach MS Windows) lub w katalogu domowym użytkownika (w systemach Apple macOS i Linux):
 - https://github.com/piotrszewczuk/OpenSourceTech2021/raw/main/Vagrantfile
