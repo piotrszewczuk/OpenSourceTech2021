@@ -9,7 +9,7 @@ Komputer PC z systemem operacyjnym MS Windows 10, Apple macOS lub Linux o nastę
 - min. 8 GB pamięci RAM
 - min. 40 GB wolnej przestrzeni dyskowej
 
-Dodatkowo w systemie operacyjnym musi być zainstalowane następujące oprogramowanie:
+Dodatkowo należy pobrać i zainstalować następujące oprogramowanie:
 
 - Vagrant - narzędzie do automatyzacji uruchamiania środowisk wirtualnych https://www.vagrantup.com/downloads
 - VirtualBox - środowisko wirtualizacyjne https://www.virtualbox.org/wiki/Downloads
