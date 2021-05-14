@@ -36,6 +36,6 @@ vagrant up
 cd ~/OpenSourceTech
 vagrant up
 ```
-Poprawne inicjalizowanie środowiska laboratoryjnego powinno zakończyć się uruchomieniem 4 maszyn wirtualnych widocznych w programie VirtualBox tak jak na poniższym zrzucie ekranu.
+Poprawne inicjalizowanie środowiska laboratoryjnego powinno zakończyć się uruchomieniem 4 maszyn wirtualnych widocznych w programie VirtualBox, tak jak na poniższym zrzucie ekranu.
 
 ![](https://github.com/piotrszewczuk/OpenSourceTech2021/blob/main/images/vb-ansible-lab.png)
