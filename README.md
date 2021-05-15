@@ -22,8 +22,8 @@ Dodatkowo należy pobrać i zainstalować następujące oprogramowanie:
 Po instalacji wymaganego oprogramowania należy pobrać plik z definicją laboratoryjnego środowiska Ansible i zapisać go w lokalnym katalogu np. 'OpenSourceTech' na dysku C: (w sytemach MS Windows) lub w katalogu domowym użytkownika (w systemach Apple macOS i Linux):
 - https://github.com/piotrszewczuk/OpenSourceTech2021/raw/main/Vagrantfile
 
-> Przy pobieraniu pliku Vagrantfile ważne jest, aby go zapisać w takiej postaci w jakiej jest udostępniony na stronie GitHub, bez żadnych rozszerzeń, zmian itp.
-> Najlepiej w przeglądarce internetowej, na wskazanym linku, wywołać menu kontekstowe i wybrać opcję "Zapisz link jako"
+> **Przy pobieraniu pliku "Vagrantfile" ważne jest, aby go zapisać w takiej postaci w jakiej jest udostępniony na stronie GitHub, bez żadnych rozszerzeń typu .txt, zmian itp.**
+> **Najlepiej w przeglądarce internetowej, na wskazanym linku, wywołać menu kontekstowe i wybrać opcję "Zapisz link jako".** 
 
 Po pobraniu pliku Vagrantfile należy uruchomić terminal i wykonać następujące polecenia: 
 - w systemie MS Windows
