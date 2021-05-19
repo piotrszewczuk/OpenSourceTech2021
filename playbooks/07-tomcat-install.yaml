@@ -1,0 +1,16 @@
+---
+- name: "Playbook 7 - Play 1"
+  hosts: proxy
+  become: yes
+  become_user: root
+  pre_tasks:
+  - debug: msg="Info from pre-task section"
+
+  roles:
+    - tomcatdeploy
+
+  tasks:
+  - debug: msg="Info from tasks section"
+
+  post_tasks:
+  - debug: msg="Info from post-tasks section"

@@ -1,0 +1,76 @@
+---
+- name: "Playbook 6 - Play 1"
+  hosts: www
+  become: yes
+  become_user: root
+  tasks:
+    - name: "Installing packages"
+      dnf:
+        state: latest
+        name:
+          - httpd
+
+    - name: "Running http service"
+      systemd:
+        name: httpd
+        state: started
+        enabled: yes
+
+    - name: "Openning 80 port on firewall"
+      firewalld:
+        service: http
+        permanent: yes
+        state: enabled
+        immediate: yes
+
+    - name: "Copying index.html file"
+      template:
+        src: files/index-html.j2
+        dest: /var/www/html/index.html
+        mode: '0644'
+        owner: root
+        group: root
+
+- name: "Playbook 6 - Play 2"
+  hosts: proxy
+  become: yes
+  become_user: root
+  vars_files: 
+    - haproxy-config.yaml 
+  tasks:
+    - name: "Installing packages"
+      dnf:
+        state: latest
+        name:
+          - haproxy
+
+    - name: "Stat if file exists"
+      stat:
+        path: /etc/haproxy/haproxy.cfg-orig
+      register: stat_haproxy_cfg
+
+    - name: "Moving orginal haproxy config file"
+      command: "mv /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg-orig"
+      when: stat_haproxy_cfg.stat.exists == False
+
+    - name: "Copying haproxy template config file"
+      template:
+        src: files/haproxy-cfg.j2
+        dest: /etc/haproxy/haproxy.cfg
+        mode: '0644'
+        owner: root
+        group: root
+
+    - name: "Openning 80 port on firewall"
+      firewalld:
+        service: http
+        permanent: yes
+        state: enabled
+        immediate: yes
+
+    - name: "Running haproxy service"
+      systemd:
+        name: haproxy
+        state: started
+        enabled: yes
+...

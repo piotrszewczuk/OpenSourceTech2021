@@ -1,0 +1,10 @@
+[proxy]
+node1
+
+[www]
+node2
+node3
+
+[allhosts:children]
+proxy
+www

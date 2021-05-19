@@ -1,0 +1,4 @@
+haproxy_ip: "192.168.20.12"
+haproxy_backend_servers:
+  - {name: node1, ip: 192.168.20.14, port: 80, paramstring: maxconn 32 check inter 5000}
+  - {name: node2, ip: 192.168.20.16, port: 80, paramstring: maxconn 32 check inter 5000}

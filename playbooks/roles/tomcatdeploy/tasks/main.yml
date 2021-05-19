@@ -1,0 +1,76 @@
+---
+# tasks file for tomcatdeploy
+- name: "Install OpenJDK"
+  yum:
+   name: '{{ java_ver }}'
+   state: latest
+
+- name: "Add Tomcat Group"
+  group:
+    name: tomcat
+
+- name: "Add Tomcat User"
+  user:
+    name: tomcat
+    group: tomcat
+    home: /user/share/tomcat
+    createhome: no
+
+- name: "Create directory for Tomcat"
+  file:
+    path: "{{ tomcat_dir }}"
+    state: directory
+    mode: 0755
+
+- name: "Copy Tomcat Instalation File"
+  copy:
+    src: "{{ tomcat_inst_file }}"
+    dest: "/tmp/{{ tomcat_inst_file }}"
+
+- name: "Unarchive Tomcat Instalation File"
+  unarchive:
+    src: "/tmp/{{ tomcat_inst_file }}"
+    dest: "{{ tomcat_dir }}"
+    remote_src: yes
+
+- name: Change ownership
+  file:
+    path: "{{ tomcat_dir }}"
+    owner: tomcat
+    group: tomcat
+    mode: "u+rwx,g+rx,o=rx"
+    recurse: yes
+    state: directory
+
+- name: "Create link to current Tomcat"
+  file:
+    src: "{{ tomcat_dir }}/{{ tomcat_ver }}"
+    dest: "{{ tomcat_dir }}/current"
+    state: link
+
+- name: Copy Tomcat service from local to remote
+  template:
+    src: tomcat.service.j2
+    dest: /etc/systemd/system/tomcat.service
+    mode: 0755
+
+- name: "Open Firewall port for Tomcat"
+  firewalld:
+    port: 8080/tcp
+    permanent: yes
+    immediate: yes
+    state: enabled
+
+- name: Start and enable Tomcat service
+  systemd:
+    name: tomcat
+    state: started
+    enabled: true
+    daemon_reload: true
+
+- name: "Deploy Tomcat App"
+  copy:
+    src: helloworld-0.1-dev.war
+    dest: "{{ tomcat_dir }}/current/webapps"
+    owner: tomcat
+    group: tomcat

@@ -1,0 +1,11 @@
+---
+- name: "Playbook 4 - Play 1"
+  hosts: all
+  become: yes
+  become_user: root
+  tasks:
+  - name: "Set motd when host in www group"
+    template:
+      src: files/motd.j2
+      dest: /etc/motd 
+    when: inventory_hostname in groups["www"]

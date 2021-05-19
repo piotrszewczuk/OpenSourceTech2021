@@ -1,0 +1,7 @@
+---
+- name: "Playbook 3 - Play 1"
+  hosts: proxy
+  tasks:
+  - name: "Prints Ansible facts"
+    debug:
+      msg: "The default IPv4 address of {{ ansible_fqdn }} is {{ ansible_default_ipv4.address }}"

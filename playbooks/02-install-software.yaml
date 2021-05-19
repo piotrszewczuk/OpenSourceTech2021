@@ -1,0 +1,14 @@
+---
+- name: "Playbook 2 - Play 1"
+  hosts: www
+  become: yes
+  become_user: root
+  tasks:
+    - name: "Installing packages"
+      dnf:
+        state: latest
+        name:
+          - mc
+          - htop
+          - vim
+...

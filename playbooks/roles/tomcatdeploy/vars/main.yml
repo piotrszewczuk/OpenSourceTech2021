@@ -1,0 +1,7 @@
+---
+# vars file for tomcatdeploy
+java_ver: java-11-openjdk
+java_dir: /usr/lib/jvm/jre-11-openjdk
+tomcat_dir: /opt/tomcat
+tomcat_inst_file: apache-tomcat-10.0.5.tar.gz
+tomcat_ver: apache-tomcat-10.0.5

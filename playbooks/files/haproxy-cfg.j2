@@ -1,0 +1,16 @@
+frontend http_balancer
+    bind {{ ansible_eth0.ipv4.address }}:80
+    option http-server-close
+    option forwardfor
+    stats uri /haproxy?stats
+
+    default_backend     webservers
+
+backend webservers
+    mode        http
+    balance     roundrobin
+    option httpchk HEAD / HTTP/1.1\r\nHost:\ localhost    
+
+    {% for server in haproxy_backend_servers %}
+    server {{server.name}}:{{server.port}} {{server.ip}}:{{server.port}} {{server.paramstring}}
+    {% endfor %}

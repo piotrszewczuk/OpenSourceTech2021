@@ -1,0 +1,14 @@
+---
+- name: "Playbook 1 - Play 1"
+  hosts: localhost
+  become: yes
+  become_user: root
+  tasks:
+    - name: "Installing packages"
+      dnf:
+        state: latest
+        name:
+          - git
+          - mc
+          - nano
+...

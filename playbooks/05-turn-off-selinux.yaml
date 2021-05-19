@@ -1,0 +1,23 @@
+---
+- name: "Playbook 5 - Play 1"
+  hosts: proxy
+  become: yes
+  become_user: root 
+  tasks:
+  - name: "Turn off selinux"
+    replace:
+      path: /etc/selinux/config
+      regexp: 'SELINUX=enforcing'
+      replace: 'SELINUX=disabled'
+    notify: "host reboot"
+
+  - name: "get selinux status"
+    command: sestatus
+    register: selinux_info
+
+  - debug: var=selinux_info.stdout
+
+  handlers:
+  - name: "host reboot"
+    reboot:
+...
