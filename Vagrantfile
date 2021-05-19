@@ -40,6 +40,7 @@ Vagrant.configure("2") do |node1Config|
     node1.vm.hostname = "node1"
     node1.vm.network "private_network", ip: "192.168.20.12"
     node1.vm.network "forwarded_port", guest:80, host: 80
+    node1.vm.network "forwarded_port", guest:8080, host: 8080
     node1.ssh.insert_key = false
     node1.vm.provider "virtualbox" do |vNode1|
       vNode1.name = "ansible_node1"
