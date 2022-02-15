@@ -3,7 +3,7 @@
 Vagrant.configure("2") do |masterConfig|
   #VM1: master
   masterConfig.vm.define "master" do |master|
-    master.vm.box = "centos/8"
+    master.vm.box = "rockylinux/8"
     master.vm.hostname = "master"
     master.vm.network "private_network", ip: "192.168.20.10"
     master.ssh.insert_key = false
@@ -36,7 +36,7 @@ end
 Vagrant.configure("2") do |node1Config|
   #VM2: Node1
   node1Config.vm.define "node1" do |node1|
-    node1.vm.box = "centos/8"
+    node1.vm.box = "rockylinux/8"
     node1.vm.hostname = "node1"
     node1.vm.network "private_network", ip: "192.168.20.12"
     node1.vm.network "forwarded_port", guest:80, host: 80
@@ -67,7 +67,7 @@ end
 Vagrant.configure("2") do |node2Config|
   #VM3: Node2
   node2Config.vm.define "node2" do |node2|
-    node2.vm.box = "centos/8"
+    node2.vm.box = "rockylinux/8"
     node2.vm.hostname = "node2"
     node2.vm.network "private_network", ip: "192.168.20.14"
     node2.ssh.insert_key = false
@@ -97,7 +97,7 @@ end
 Vagrant.configure("2") do |node3Config|
   #VM4: Node3
   node3Config.vm.define "node3" do |node3|
-    node3.vm.box = "centos/8"
+    node3.vm.box = "rockylinux/8"
     node3.vm.hostname = "node3"
     node3.vm.network "private_network", ip: "192.168.20.16"
     node3.ssh.insert_key = false
